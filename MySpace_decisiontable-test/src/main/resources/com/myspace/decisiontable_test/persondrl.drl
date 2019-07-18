@@ -1,0 +1,47 @@
+package com.myspace.decisiontable_test;
+rule "Rule1"
+	ruleflow-group "ageEvaluation"
+	dialect "mvel"
+	when
+		person : Person( age == 18 )
+	then
+		modify( person ) {
+				setPersontype( "ELIGIBLE FOR VOTE" )
+		}
+end
+
+//from row number: 2
+rule "Rule2"
+	ruleflow-group "ageEvaluation"
+	dialect "mvel"
+	when
+		person : Person( age == 15 )
+	then
+		modify( person ) {
+				setPersontype( "NOT ELIGIBLE FOR VOTE" )
+		}
+end
+
+//from row number: 3
+rule "Rule3"
+	ruleflow-group "ageEvaluation"
+	dialect "mvel"
+	when
+		person : Person( age == 80 )
+	then
+		modify( person ) {
+				setPersontype( "ELIGIBLE MAN ok" )
+		}
+end
+
+//from row number: 4
+rule "Rule4"
+	ruleflow-group "ageEvaluation"
+	dialect "mvel"
+	when
+		person : Person( age == 100 )
+	then
+		modify( person ) {
+				setPersontype( "OLDAGE MAN" )
+		}
+end
